@@ -1,0 +1,19 @@
+.fk {
+    background-image: url('../../../assets/images/Fundo.png');
+    height: 100vh;
+    width: 100%;
+}
+
+.linha {
+    border-top: solid 1px #B5B5B5;
+    width: 30%;
+}
+
+.text-cinza {
+    color: #B5B5B5;
+}
+
+.rounded-t-perso {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
