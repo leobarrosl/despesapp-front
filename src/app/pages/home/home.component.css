@@ -1,15 +1,23 @@
-.fk {
+.bg-img-login {
     background-image: url('../../../assets/images/Fundo.png');
+}
+
+.over-canvas {
+    position: absolute;
+    z-index: 50;
+}
+
+.fullscreen-content {
     height: 100vh;
     width: 100%;
 }
 
-.linha {
+.line {
     border-top: solid 1px #B5B5B5;
     width: 30%;
 }
 
-.text-cinza {
+.text-gray {
     color: #B5B5B5;
 }
 

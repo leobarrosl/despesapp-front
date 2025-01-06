@@ -1,40 +1,47 @@
-<div class="fk flex flex-col justify-between pb-36 px-5">
-    <h1 class="font-allura">Despesapp</h1>
-    <div class="flex flex-col items-center justify-center mt-50 self-center gap-3">
-        <div>
-            <img src="assets/images/Logo.svg" alt="Logotipo do despesapp">
+<div class="bg-img-login fullscreen-content">
+    <div *ngIf="!anyDrawerOpen()" class="flex flex-col justify-between pb-36 px-5 fullscreen-content">
+        <h1 class="font-allura">Despesapp</h1>
+        <div class="flex flex-col items-center justify-center mt-50 self-center gap-3">
+            <div>
+                <img src="assets/images/Logo.svg" alt="Logotipo do despesapp">
+            </div>
+            <h3 class="roboto-bold text-white text-4xl">Bem-vindo!</h3>
+            <p class="text-center roboto-bold text-white text-base mx-10">Gerencia sua vida financeira de forma gratuita e
+                simples!</p>
         </div>
-        <h3 class="roboto-bold text-white text-4xl">Bem-vindo!</h3>
-        <p class="text-center roboto-bold text-white text-base mx-10">Gerencia sua vida financeira de forma gratuita e
-            simples!</p>
+        <div class="flex flex-col items-center gap-2">
+            <button class="bg-emerald-100 w-80 py-4 rounded-lg roboto-medium text-gray-500" type="button"
+                (click)="openLoginDrawer()">Entrar</button>
+            <span class="text-white text-center roboto-medium text-base">
+                Não tem conta?
+                <a class="roboto-bold cursor-pointer" (click)="openSignUpDrawer()">Cadastre-se</a>
+            </span>
+        </div>
     </div>
-    <div class="flex flex-col items-center gap-2">
-        <button class="bg-emerald-100 w-80 py-4 rounded-lg roboto-medium text-gray-500" type="button"
-            (click)="openDrawer()">Entrar</button>
-        <span class="text-white text-center roboto-medium text-base">
-            Não tem conta?
-            <a href="#" class="roboto-bold">Cadastre-se</a>
-        </span>
+
+    <div class="roboto-medium ms-10 pt-14 text-white over-canvas" *ngIf="anyDrawerOpen()">
+        <h2 class="text-5xl">Olá!</h2>
+        <span class="text-xl">Seja bem-vindo ao Despesapp</span>
     </div>
 </div>
 
-<div class="fixed inset-0 bg-black bg-opacity-50 z-40" *ngIf="isLoginDrawerOpen" (click)="closeDrawer()"></div>
-<div class="fixed bottom-0 left-0 right-0 bg-gray-100 p-6 rounded-t-perso shadow-lg z-50 transition-transform"
+<div class="fixed inset-0 bg-black bg-opacity-40 z-40" *ngIf="isLoginDrawerOpen" (click)="closeLoginDrawer()"></div>
+<div class="fixed bottom-0 left-0 right-0 bg-gray-200 p-6 rounded-t-perso shadow-lg z-50 transition-transform"
     [ngClass]="{ 'translate-y-0': isLoginDrawerOpen, 'translate-y-full': !isLoginDrawerOpen }">
     <h2 class="p-3 pt-9 text-3xl roboto-bold text-emerald-700">Login</h2>
-    <form class="flex flex-col px-3 pt-6" (submit)="onSubmit()" [formGroup]="form">
+    <form class="flex flex-col px-3 pt-6" (submit)="onSubmitLogin()" [formGroup]="formLogin">
         <div class="flex flex-col gap-7">
             <input class="rounded-full border-none py-3 ps-6" type="email" placeholder="Email" formControlName="email">
             <input class="rounded-full border-none py-3 ps-6" type="password" placeholder="Senha" formControlName="password">
         </div>
         <a href="#" class="roboto-bold text-emerald-700 self-end mt-3">Esqueci minha senha</a>
-        <button type="button" class="bg-emerald-700 py-3 rounded-full text-white roboto-medium mt-10" (click)="onSubmit()">Entrar</button>
+        <button type="button" class="bg-emerald-700 py-3 rounded-full text-white roboto-medium mt-10" (click)="onSubmitLogin()">Entrar</button>
     </form>
     <div class="flex flex-col">
         <div class="flex justify-center items-center gap-3 mt-7">
-            <div class="linha"></div>
-            <span class="text-cinza">Ou entre com</span>
-            <div class="linha"></div>
+            <div class="line"></div>
+            <span class="text-gray">Ou entre com</span>
+            <div class="line"></div>
         </div>
         <div class="flex justify-center gap-4 mt-5">
             <button class="bg-white py-2.5 px-6 rounded-2xl">
@@ -48,7 +55,29 @@
             </button>
         </div>
         <div class="flex justify-center mt-9 mb-6">
-            <span class="roboto-regular text-cinza">Não tem uma conta? <span class="roboto-bold text-emerald-700">Cadastre-se</span></span>
+            <span class="roboto-regular text-gray">Não tem uma conta? <span class="roboto-bold text-emerald-700 cursor-pointer" (click)="openSignUpDrawer()">Cadastre-se</span></span>
+        </div>
+    </div>
+</div>
+
+<div class="fixed inset-0 bg-black bg-opacity-40 z-40" *ngIf="isSignUpDrawerOpen" (click)="closeSignUpDrawer()"></div>
+<div class="fixed bottom-0 left-0 right-0 bg-gray-200 p-6 rounded-t-perso shadow-lg z-50 transition-transform"
+    [ngClass]="{ 'translate-y-0': isSignUpDrawerOpen, 'translate-y-full': !isSignUpDrawerOpen }">
+    <h2 class="p-3 pt-9 text-3xl roboto-bold text-emerald-700">Cadastro</h2>
+    <form class="flex flex-col px-3 pt-6" (submit)="onSubmitLogin()" [formGroup]="formSignUp">
+        <div class="flex flex-col gap-7">
+            <input class="rounded-full border-none py-3 ps-6" type="text" placeholder="Primeiro nome" formControlName="firstName">
+            <input class="rounded-full border-none py-3 ps-6" type="text" placeholder="Sobrenome" formControlName="lastName">
+            <input class="rounded-full border-none py-3 ps-6" type="email" placeholder="Email" formControlName="email">
+            <input class="rounded-full border-none py-3 ps-6" type="password" placeholder="Senha" formControlName="password">
+            <input class="rounded-full border-none py-3 ps-6" type="password" placeholder="Confirme sua senha" formControlName="passwordConfirmation">
+            <input class="rounded-full border-none py-3 ps-6" type="text" placeholder="Telefone" formControlName="phone">
+        </div>
+        <button type="button" class="bg-emerald-700 py-3 rounded-full text-white roboto-medium mt-10" (click)="onSubmitLogin()">Cadastrar</button>
+    </form>
+    <div class="flex flex-col">
+        <div class="flex justify-center mt-9 mb-6">
+            <span class="roboto-regular text-gray">Já tem uma conta? <span class="roboto-bold text-emerald-700 cursor-pointer" (click)="openLoginDrawer()">Conecte-se</span></span>
         </div>
     </div>
 </div>
