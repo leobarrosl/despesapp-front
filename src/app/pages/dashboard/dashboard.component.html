@@ -1,18 +1,6 @@
 <div class="background-dashboard text-white roboto-regular">
     <div id="header" class="ps-9 pe-9 pt-14">
-        <div id="header-menu-bar" class="flex justify-between px-5">
-            <div class="flex items-start gap-3">
-                <img width="24px" src="assets/icons/menu.svg" alt="Ícone de menu">
-                <div class="flex flex-col text-sm gap-1">
-                    <span class="text-gray-300">Bem-vindo de volta</span>
-                    <span>Fulano de Tal</span>
-                </div>
-            </div>
-            <div class="flex gap-3">
-                <img width="28px" src="assets/icons/glass.svg" alt="Ícone de lupa">
-                <img width="28px" src="assets/icons/bell.svg" alt="Ícone de notificações">
-            </div>
-        </div>
+        <app-header-menu-bar></app-header-menu-bar>
         <div id="header-data-bar" class="flex justify-between mt-8 px-2">
             <div id="balance" class="flex flex-col gap-2">
                 <span class="text-xs text-gray-300">Saldo Atual</span>
@@ -24,14 +12,7 @@
                 <img src="assets/icons/chart-example.svg" alt="Exemplo de gráfico">
             </div>
         </div>
-        <div id="buttons" class="flex justify-between mt-8">
-            <button class="py-5 px-8 bg-gray-100 bg-opacity-25 rounded-2xl text-sm flex gap-1 items-center">
-                Nova receita <img src="assets/icons/arrowup.svg" alt="Seta para cima">
-            </button>
-            <button class="py-5 px-8 bg-gray-100 bg-opacity-25 rounded-2xl text-sm flex gap-1 items-center">
-                Nova despesa <img src="assets/icons/arrowdown.svg" alt="Seta para baixo">
-            </button>
-        </div>
+        <app-header-button-bar></app-header-button-bar>
     </div>
     <div class="main">
         <div id="cards"></div>
