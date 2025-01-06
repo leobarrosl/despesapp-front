@@ -1,4 +1,6 @@
-const mock = {
+import { FullUser } from "../../app/services/models/Usuario.model";
+
+const mock: FullUser = {
     "id": 1,
     "firstName": "Leonardo",
     "lastName": "Leite",
