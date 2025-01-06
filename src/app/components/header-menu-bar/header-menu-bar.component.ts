@@ -10,12 +10,14 @@ import { User } from '../../services/models/Usuario.model';
 })
 export class HeaderMenuBarComponent implements OnInit {
 
-  user: User | null = null;
+  user: User;
 
-  constructor(private mockService: MockService) {}
+  constructor(private mockService: MockService) {
+      this.user = this.mockService.getUser();
+  }
 
   ngOnInit(): void {
-    this.user = this.mockService.getUser()
+    
   }
 
 }
