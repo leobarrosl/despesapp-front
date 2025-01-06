@@ -11,7 +11,7 @@ import {initFlowbite} from 'flowbite';
 })
 export class HomeComponent implements OnInit {
   isLoginDrawerOpen = false;
-  isSignUpDrawerOpen = true;
+  isSignUpDrawerOpen = false;
 
   formLogin: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required]),
