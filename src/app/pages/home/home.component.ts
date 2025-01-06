@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {initFlowbite} from 'flowbite';
 
 @Component({
@@ -10,24 +10,27 @@ import {initFlowbite} from 'flowbite';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  isDrawerOpen = false;
-  email = '';
-  password = '';
+  isLoginDrawerOpen = false;
+
+  form: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
+  });
 
   ngOnInit() {
     initFlowbite();
   }
 
   openDrawer() {
-    this.isDrawerOpen = true;
+    this.isLoginDrawerOpen = true;
   }
 
   closeDrawer() {
-    this.isDrawerOpen = false;
+    this.isLoginDrawerOpen = false;
   }
 
   onSubmit() {
-    console.log('Email:', this.email, 'Password:', this.password);
+    console.log('Email:', this.form.value.email, '\nPassword:', this.form.value.password);
     this.closeDrawer();
   }
 
