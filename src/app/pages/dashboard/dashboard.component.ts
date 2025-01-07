@@ -1,7 +1,7 @@
 import { Component, LOCALE_ID } from '@angular/core';
 import { HeaderMenuBarComponent } from '../../components/header-menu-bar/header-menu-bar.component';
 import { HeaderButtonBarComponent } from '../../components/header-button-bar/header-button-bar.component';
-import { User } from '../../services/models/Usuario.model';
+import { Card, Entry, User } from '../../services/models/Usuario.model';
 import { MockService } from '../../services/mock.service';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
@@ -21,10 +21,14 @@ registerLocaleData(localePt, 'pt-BR', localePtExtra);
 export class DashboardComponent {
 
   user: User;
+  cards: Array<Card>;
+  entries: Array<Entry>;
 
   constructor(private mockService: MockService) {
 
     this.user = mockService.getUser();
+    this.cards = mockService.getCards();
+    this.entries = mockService.getEntries();
   }
 
 }

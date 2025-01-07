@@ -4,7 +4,7 @@
         <div id="header-data-bar" class="flex justify-between mt-8 px-2">
             <div id="balance" class="flex flex-col gap-2">
                 <span class="text-xs text-gray-300">Saldo Atual</span>
-                <span class="text-3xl">{{user.balance | currency: '$'}}</span>
+                <span class="text-4xl">{{user.balance | currency: '$'}}</span>
                 <span class="text-xs">+ {{user.growth | currency: '$'}} (2%)</span>
             </div>
             <div id="chart" class="flex flex-col items-center">
@@ -14,8 +14,45 @@
         </div>
         <app-header-button-bar></app-header-button-bar>
     </div>
-    <div class="main">
-        <div id="cards"></div>
-        <div id="latest-releases"></div>
+    <div id="main" class="bg-main flex flex-col mt-6 pt-8 px-7">
+        <div id="cards" class="flex flex-col">
+            <span class="text-xs roboto-regular">Meus cartões</span>
+            <div class="flex overflow-hidden mt-2.5 gap-2.5 flex-nowrap max-w-96">
+                <button class="circle-card flex-shrink-0">
+                    <img class="overflow-hidden rounded-full p-2 bg-add-card" src="assets/icons/pluscircle.svg" alt="Adicionar cartão">
+                </button>
+                <!-- TODO Transformar em carrossel -->
+                @for (card of cards; track $index) {
+                    <button class="circle-card flex-shrink-0">
+                        <img class="overflow-hidden rounded-full flex-shrink-0" src="assets/cards/{{card.image}}" alt="Imagem do {{card.description}}">
+                    </button>
+                }
+            </div>
+        </div>
+        <div id="latest-releases" class="flex flex-col mt-9 pt-7 pb-7 px-6 bg-releases rounded-t-20 h-full">
+            <div class="flex justify-between roboto-regular text-sm">
+                <span>Últimos lançamentos</span>
+                <a href="#" class="text-gray-300">Ver todos</a>
+            </div>
+            <div class="flex flex-col mt-9 gap-6">
+                @for (entry of entries; track $index) {
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2.5 bg-black rounded-full">
+                                <img class="rounded-full entry-icon" src="assets/icons/{{entry.icon}}.svg" alt="Ícone do lançamento">
+                            </div>
+                            <div class="flex flex-col gap-2 text-sm">
+                                <span>{{entry.description}}</span>
+                                <span class="text-gray-300">{{entry.paymentMethod}}</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2 text-sm text-end">
+                            <span class="{{entry.value > 0 ? 'text-emerald-400' : 'text-red-500'}}">{{entry.value | currency: '$'}}</span>
+                            <span class="text-gray-300">{{entry.entryDate | date: 'dd/MM/yyyy'}}</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
     </div>
 </div>

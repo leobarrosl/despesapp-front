@@ -53,7 +53,7 @@ const mock: FullUser = {
         {
             "id": 2,
             "description": "Compra Kabum",
-            "icon": "wallet",
+            "icon": "briefcase",
             "value": -150.00,
             "entryDate": "2024-12-31",
             "paymentMethod": "Cartão"
@@ -61,7 +61,7 @@ const mock: FullUser = {
         {
             "id": 3,
             "description": "Salário",
-            "icon": "wallet",
+            "icon": "briefcase",
             "value": 1500.00,
             "entryDate": "2024-12-31",
             "paymentMethod": "À vista"
@@ -77,7 +77,7 @@ const mock: FullUser = {
         {
             "id": 5,
             "description": "Compra Kabum",
-            "icon": "wallet",
+            "icon": "briefcase",
             "value": -150.00,
             "entryDate": "2024-12-31",
             "paymentMethod": "Cartão"
