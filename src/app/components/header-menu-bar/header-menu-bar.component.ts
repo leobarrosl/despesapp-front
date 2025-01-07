@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MockService } from '../../services/mock.service';
 import { User } from '../../services/models/Usuario.model';
 
@@ -10,10 +10,9 @@ import { User } from '../../services/models/Usuario.model';
 })
 export class HeaderMenuBarComponent implements OnInit {
 
-  user: User;
+  @Input() name: string = ''
 
   constructor(private mockService: MockService) {
-      this.user = this.mockService.getUser();
   }
 
   ngOnInit(): void {

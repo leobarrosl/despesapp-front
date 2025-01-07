@@ -7,6 +7,8 @@ const mock: FullUser = {
     "email": "leonardoleite99@gmail.com",
     "password": "123",
     "phone": "82981894183",
+    "balance": 10000.49,
+    "growth": 200.79,
     "cards": [
         {
             "id": 1,

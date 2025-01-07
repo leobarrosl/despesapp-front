@@ -5,6 +5,8 @@ export interface FullUser {
     email: string
     password: string
     phone: string
+    balance: number
+    growth: number
     cards: Array<Card>,
     entries: Array<Entry>
 }
@@ -15,6 +17,8 @@ export interface User {
     lastName: string
     email: string
     phone: string
+    balance: number
+    growth: number
 }
 
 export interface Entry {

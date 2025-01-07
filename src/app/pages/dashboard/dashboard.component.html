@@ -1,11 +1,11 @@
 <div class="background-dashboard text-white roboto-regular">
     <div id="header" class="ps-9 pe-9 pt-14">
-        <app-header-menu-bar></app-header-menu-bar>
+        <app-header-menu-bar name="{{user.firstName + ' ' + user.lastName}}"></app-header-menu-bar>
         <div id="header-data-bar" class="flex justify-between mt-8 px-2">
             <div id="balance" class="flex flex-col gap-2">
                 <span class="text-xs text-gray-300">Saldo Atual</span>
-                <span class="text-4xl">$10.000,49</span>
-                <span class="text-xs">+200,79(2%)</span>
+                <span class="text-3xl">{{user.balance | currency: '$'}}</span>
+                <span class="text-xs">+ {{user.growth | currency: '$'}} (2%)</span>
             </div>
             <div id="chart" class="flex flex-col items-center">
                 <span class="text-gray-300">Últimos 30 dias</span>

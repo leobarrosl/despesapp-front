@@ -20,7 +20,9 @@ export class MockService {
             firstName: mock.firstName,
             lastName: mock.lastName,
             email: mock.email,
-            phone: mock.phone
+            phone: mock.phone,
+            balance: mock.balance,
+            growth: mock.growth
         }
     }
 
